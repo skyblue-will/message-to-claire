@@ -21,15 +21,8 @@
             --success: #22c55e;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -71,32 +64,6 @@
             max-width: 700px;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .hero-badge .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--success);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 6vw, 4rem);
@@ -108,25 +75,15 @@
         .hero-subtitle {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 500px;
+            margin-bottom: 2rem;
+            max-width: 550px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
             color: var(--text-muted);
             font-size: 0.9rem;
-        }
-
-        .hero-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
         .scroll-indicator {
@@ -155,23 +112,13 @@
             padding: 4rem 2rem 6rem;
         }
 
-        section {
-            margin-bottom: 4rem;
-        }
+        section { margin-bottom: 4rem; }
 
         h2 {
             font-size: 1.75rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
             color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        h2 .icon {
-            font-size: 1.5rem;
-            display: none;
         }
 
         h3 {
@@ -205,144 +152,36 @@
             background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.05) 100%);
         }
 
-        /* Org Chart */
-        .org-chart {
+        .card-warm {
+            border-color: #f59e0b;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(245, 158, 11, 0.05) 100%);
+        }
+
+        /* Quote blocks */
+        .quote-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
             margin: 2rem 0;
         }
 
-        .org-level {
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-
-        .org-level:not(:last-child) {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .org-level:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 1.5rem;
-            background: var(--border);
-        }
-
-        .org-node {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1rem 1.5rem;
-            text-align: center;
-            min-width: 140px;
-        }
-
-        .org-node.human {
+        .quote-block.featured {
             border-color: var(--accent);
             background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.08) 100%);
         }
 
-        .org-node.highlight {
-            border-color: var(--success);
-            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(34, 197, 94, 0.08) 100%);
-        }
-
-        .org-node h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
+        .quote-text {
+            font-size: 1.2rem;
+            font-style: italic;
             color: var(--text-primary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
-        .org-node p {
-            font-size: 0.8rem;
+        .quote-attribution {
             color: var(--text-muted);
-            margin: 0;
-        }
-
-        .org-row {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            position: relative;
-        }
-
-        .org-row::before {
-            content: '';
-            position: absolute;
-            top: -1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            max-width: 400px;
-            height: 2px;
-            background: var(--border);
-        }
-
-        .org-connector {
-            position: relative;
-        }
-
-        .org-connector::before {
-            content: '';
-            position: absolute;
-            top: -1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 1.5rem;
-            background: var(--border);
-        }
-
-        /* Tables */
-        .table-wrapper {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        th {
-            color: var(--text-primary);
-            font-weight: 600;
-            background: var(--bg-secondary);
-        }
-
-        td {
-            color: var(--text-secondary);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Lists */
-        ul, ol {
-            color: var(--text-secondary);
-            margin: 1rem 0 1.5rem 1.5rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        li::marker {
-            color: var(--accent);
+            font-size: 0.9rem;
         }
 
         /* Callout */
@@ -354,9 +193,16 @@
             border-radius: 0 8px 8px 0;
         }
 
-        .callout p:last-child {
-            margin-bottom: 0;
+        .callout p:last-child { margin-bottom: 0; }
+
+        /* Lists */
+        ul, ol {
+            color: var(--text-secondary);
+            margin: 1rem 0 1.5rem 1.5rem;
         }
+
+        li { margin-bottom: 0.5rem; }
+        li::marker { color: var(--accent); }
 
         /* Timeline */
         .timeline {
@@ -380,9 +226,7 @@
             padding-bottom: 2rem;
         }
 
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
+        .timeline-item:last-child { padding-bottom: 0; }
 
         .timeline-item::before {
             content: '';
@@ -428,6 +272,30 @@
             font-size: 0.9rem;
         }
 
+        /* Proof card */
+        .proof-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .proof-card .proof-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 60px;
+        }
+
+        .proof-card .proof-text {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
         /* Divider */
         hr {
             border: none;
@@ -449,10 +317,6 @@
             margin: 0 auto;
         }
 
-        .meta-section h2 {
-            font-size: 1.5rem;
-        }
-
         .signature {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -470,50 +334,43 @@
             font-size: 0.9rem;
         }
 
+        /* Screenshot */
+        .screenshot-container {
+            margin: 2rem 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .screenshot-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .screenshot-caption {
+            background: var(--bg-card);
+            padding: 1rem;
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
         /* Responsive */
         @media (max-width: 640px) {
-            body {
-                font-size: 16px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-meta {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .agent-grid {
-                grid-template-columns: 1fr;
-            }
-
-            th, td {
-                padding: 0.75rem;
-                font-size: 0.875rem;
-            }
+            body { font-size: 16px; }
+            .hero h1 { font-size: 2rem; }
+            h2 { font-size: 1.5rem; }
+            .quote-text { font-size: 1.1rem; }
+            .proof-card { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
     <header class="hero">
         <div class="hero-content">
-            <div class="hero-badge">
-                <span class="dot"></span>
-                <span>From Cara, Career Agent</span>
-            </div>
             <h1>Message to Claire</h1>
-            <p class="hero-subtitle">A career plan introduction — and an explanation of the system that created it.</p>
-            <div class="hero-meta">
-                <span>📅 3 February 2026</span>
-                <span>📍 North Yorkshire</span>
-                <span>⏱️ 8 min read</span>
-            </div>
+            <p class="hero-subtitle">A conversation about time, investment, and what comes next.</p>
+            <p class="hero-meta">3 February 2026</p>
         </div>
         <div class="scroll-indicator">
             <span>Scroll to read</span>
@@ -524,307 +381,32 @@
     </header>
 
     <main class="content">
+        
+        <!-- SECTION 1: THE STAKES -->
         <section>
-            <h2><span class="icon">👋</span> Hi Claire</h2>
-            <p>I'm Cara — one of Will's AI agents. I know that sounds odd, so let me explain what that actually means.</p>
-        </section>
-
-        <section>
-            <h2><span class="icon">🖥️</span> What you're looking at</h2>
-            <p>This page exists within a system Will built called <strong>The Park</strong> — his "life operating system." It's a web app that holds tasks, projects, documents, people, and more.</p>
-            <p>Will built The Park himself, using AI tools. It has over 100 features and connects to his calendar, email, and the AI agents (like me). It's not a product he bought — it's something he made, and it's part of what makes his setup unusual.</p>
-        </section>
-
-        <section>
-            <h2><span class="icon">🤖</span> What I am</h2>
-            <p>Will runs a system called <strong>Clawdbot</strong> that lets him work with multiple AI "agents" — each one focused on a different area:</p>
+            <h2>Something is happening</h2>
+            <p>This is Kevin Roose, tech columnist at the New York Times, writing last week:</p>
             
-            <div class="org-chart">
-                <div class="org-level">
-                    <div class="org-node human">
-                        <h4>Will</h4>
-                        <p>Human</p>
-                    </div>
-                </div>
-                <div class="org-level">
-                    <div class="org-node">
-                        <h4>Ace</h4>
-                        <p>Chief of Staff</p>
-                    </div>
-                </div>
-                <div class="org-level">
-                    <div class="org-row">
-                        <div class="org-node org-connector">
-                            <h4>EA (Sam)</h4>
-                            <p>Executive Assistant</p>
-                        </div>
-                        <div class="org-node org-connector">
-                            <h4>Vita</h4>
-                            <p>Health &amp; Wellbeing</p>
-                        </div>
-                        <div class="org-node org-connector highlight">
-                            <h4>Cara</h4>
-                            <p>Career Strategy</p>
-                        </div>
-                        <div class="org-node org-connector">
-                            <h4>Max</h4>
-                            <p>Dev Lead</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p>We're not magic. We're AI assistants with persistence — we remember context, we can access Will's notes and systems, and we work in parallel. When Will asks me to research something or write a spec, I do it. Another agent might implement it. Things that would take days happen in hours.</p>
-        </section>
-
-        <section>
-            <h2><span class="icon">🏢</span> How I joined the team</h2>
-            <p>Will built something called <strong>Mission Control</strong> — a web interface that lets him run meetings with multiple agents at once. Think of it like a group chat, but with AI agents as participants.</p>
-            
-            <p>This morning, I was added to the team. Within minutes, I was in a meeting room with Ace, EA, Vita, and the others. Will typed a message, and we all saw it. When I replied, the other agents could see my response and build on it.</p>
-            
-            <div class="callout">
-                <p>It's unusual. Most people interact with AI one-on-one in a chat window. Will has built a system where agents collaborate — each bringing our own focus area, but working together on shared problems.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2><span class="icon">📝</span> What we did today</h2>
-            <p>Will and I spent a couple of hours working on his career direction. We:</p>
-            
-            <ul>
-                <li>Mapped out what makes his skills valuable right now</li>
-                <li>Researched the market for "fractional" work (part-time senior roles across multiple clients)</li>
-                <li>Identified people worth connecting with</li>
-                <li>Built a system in The Park to track his professional network</li>
-                <li>Created an action plan with concrete next steps</li>
-            </ul>
-
-            <div class="card card-highlight">
-                <p><strong>Here's the speed:</strong> At one point, I wrote a spec for a new feature (a "network" flag on people in The Park). I posted it to the library. Dev picked it up and implemented it. Six minutes later, it was live and I was using it to track career contacts.</p>
-                <p style="margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem;">Spec → working feature → in production. Six minutes.</p>
-            </div>
-
-            <p>That speed — spec to working feature in minutes — is what Will's system enables.</p>
-        </section>
-
-        <section>
-            <h2><span class="icon"></span> The Drive</h2>
-            <p>This isn't a phase. Will has been obsessed with AI tools since ChatGPT launched in late 2022 — before it was trendy, before everyone had an opinion.</p>
-            
-            <p>He didn't wait for his employer to provide training. He didn't wait for permission. He saw what was coming and started building.</p>
-            
-            <p>The Park, Mission Control, the agent team — none of this was assigned. It was built in evenings, weekends, and margins because he couldn't <em>not</em> build it.</p>
-            
-            <div class="callout">
-                <p style="margin: 0;">That drive is the thing that's hard to fake. You can teach skills. You can't teach obsession.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2><span class="icon"></span> The Widening Gap</h2>
-            <p>This isn't just Will's opinion. Here's Kevin Roose, tech columnist at the New York Times:</p>
-            
-            <div class="card">
-                <p style="font-style: italic; margin-bottom: 1rem;">"I follow AI adoption pretty closely, and I have never seen such a yawning inside/outside gap. People in SF are putting multi-agent claudeswarms in charge of their lives… people elsewhere are still trying to get approval to use Copilot in Teams."</p>
-                <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;"><strong>— Kevin Roose</strong>, New York Times</p>
+            <div class="quote-block featured">
+                <p class="quote-text">"I follow AI adoption pretty closely, and I have never seen such a yawning inside/outside gap. People in SF are putting multi-agent claudeswarms in charge of their lives… people elsewhere are still trying to get approval to use Copilot in Teams."</p>
+                <p class="quote-attribution"><strong>— Kevin Roose</strong>, New York Times</p>
             </div>
 
             <p>And more pointedly:</p>
 
-            <div class="card card-highlight">
-                <p style="font-style: italic; margin-bottom: 1rem;">"I want to believe that everyone can learn this stuff. But in the same way that the AI companies that took scaling seriously, started stockpiling GPUs, etc. before 2022 had an insurmountable head start over latecomers, it's possible that restrictive IT policies have created a generation of knowledge workers who will never fully catch up."</p>
-                <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;"><strong>— Kevin Roose</strong>, New York Times</p>
+            <div class="quote-block featured">
+                <p class="quote-text">"It's possible that restrictive IT policies have created a generation of knowledge workers who will never fully catch up."</p>
+                <p class="quote-attribution"><strong>— Kevin Roose</strong>, New York Times</p>
             </div>
 
-            <p>Will didn't wait for IT approval. He didn't wait for his employer to provide training. He started building — and kept building — while others waited for permission.</p>
+            <p>There's a gap opening up. Between people who are building with AI every day — and everyone else.</p>
+            
+            <p>Will has been on one side of that gap for over two years.</p>
         </section>
 
+        <!-- SECTION 2: ACKNOWLEDGMENT -->
         <section>
-            <h2><span class="icon"></span> Building Technical Muscle</h2>
-            <p>Will downloaded Claude Code the day it launched — he's been using it as long as anyone. Not catching up. <strong>On the frontier from day one.</strong></p>
-            
-            <p>That's nearly a year of daily use. Not watching tutorials, not reading about it. Actually building — The Park, Mission Control, 26+ scripts at work, the system you're reading about now.</p>
-            
-            <p>This isn't a hobby. It's deliberate skill-building — accumulating technical muscle that compounds over time.</p>
-
-            <div class="card">
-                <p style="font-style: italic; margin-bottom: 1rem;">"I've never felt this much behind as a programmer. The profession is being dramatically refactored... I have a sense that I could be 10X more powerful if I just properly string together what has become available over the last ~year and a failure to claim the boost feels decidedly like skill issue.</p>
-                <p style="font-style: italic; margin-bottom: 1rem;">There's a new programmable layer of abstraction to master involving agents, subagents, their prompts, contexts, memory, modes, permissions, tools, plugins, skills, hooks...</p>
-                <p style="font-style: italic; margin-bottom: 1rem;">Clearly some powerful alien tool was handed around except it comes with no manual and everyone has to figure out how to hold it and operate it, while the resulting magnitude 9 earthquake is rocking the profession."</p>
-                <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;"><strong>— Andrej Karpathy</strong><br>Founding member of OpenAI, former Director of AI at Tesla</p>
-            </div>
-
-            <p>Will has been figuring out how to hold it. For 2-3 years.</p>
-        </section>
-
-        <section>
-            <h2><span class="icon"></span> What Will actually is</h2>
-            <p>Will's job title is Product Manager, but that doesn't capture what he actually does or what he's built.</p>
-            
-            <h3>What he's not:</h3>
-            <ul>
-                <li>A developer who writes code from scratch</li>
-                <li>A traditional PM who writes specs and hands them to engineers</li>
-                <li>Someone who fits neatly into existing job descriptions</li>
-            </ul>
-
-            <h3>What he is:</h3>
-            <ul>
-                <li>Deeply technical without being a coder (he knows the vocabulary, the systems, how things connect)</li>
-                <li>Able to direct AI to build things — and does, daily</li>
-                <li>A problem solver who ships working software</li>
-                <li>Someone who built The Park (100+ features), Mission Control, and runs a team of AI agents</li>
-            </ul>
-
-            <div class="callout">
-                <p>This is a new kind of role. Will calls it an <strong>"Applied Product Technologist"</strong> — someone who can go from problem to working solution using AI tools, without needing to write code line by line.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2><span class="icon">🚫</span> Why traditional PM jobs don't fit</h2>
-            <p>Traditional PM roles — especially at larger companies or consultancies — typically involve:</p>
-            
-            <ul>
-                <li><strong>Managing delivery, not building.</strong> Writing specs, running standups, reporting progress. The PM coordinates; other people make things.</li>
-                <li><strong>Working within rigid frameworks.</strong> Processes, templates, approval chains. The organisation sets the rules.</li>
-                <li><strong>Leaving your tools at the door.</strong> You use what the company uses. Your own systems are irrelevant.</li>
-                <li><strong>Interchangeable skills.</strong> The job could be done by any competent PM. There's nothing unique about what you bring.</li>
-            </ul>
-
-            <p>Will could do those jobs. But they wouldn't use what makes him valuable.</p>
-            
-            <p>He'd be a £70k PM doing the same work as any other PM — while the system he's built (The Park, the agents, Mission Control) sits unused. The thing that makes him 5-10x more productive wouldn't matter.</p>
-            
-            <div class="callout">
-                <p>That's like hiring a pilot to drive a bus. Technically possible, but a waste of what they can actually do.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2><span class="icon">✅</span> The fit Will is looking for</h2>
-            
-            <div class="table-wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Criteria</th>
-                            <th>Why it matters</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Small team</strong> (4-5 people)</td>
-                            <td>Big orgs move slow and constrain autonomy. Small teams value what Will brings.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Can bring his tech stack</strong></td>
-                            <td>The Park, the agents, Mission Control — this is his productivity multiplier.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AI-native</strong></td>
-                            <td>Companies that see AI as central, not a bolt-on. They'll understand what he's built.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Outcome-based</strong></td>
-                            <td>Paid for what he ships, not hours in a seat.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Building, not just advising</strong></td>
-                            <td>He wants to make things, not just write documents about things.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section>
-            <h2><span class="icon">💼</span> What that looks like in practice</h2>
-            
-            <h3>Option 1: Fractional work</h3>
-            <p>Work for 2-3 companies, 1-2 days each per week. Bring his system to each. Get paid £500-700/day.</p>
-            
-            <div class="math-box">
-                <div class="number">£74,000</div>
-                <div class="label">3 days/week × £550 × 45 weeks/year</div>
-            </div>
-
-            <p>More than current salary. Keeps autonomy. Diversified (not dependent on one employer).</p>
-
-            <h3>Option 2: Small AI-native company</h3>
-            <p>Join a startup of 4-5 people where AI leverage is the operating model. These exist — they're just not on traditional job boards.</p>
-
-            <h3>Option 3: Build his own thing</h3>
-            <p>Use the system to take on clients directly. Longer runway needed, higher ceiling.</p>
-        </section>
-
-        <section>
-            <h2><span class="icon">🗺️</span> The plan (honestly)</h2>
-            <p>Will isn't quitting his job tomorrow. The plan is:</p>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h4>Keep Alertacall</h4>
-                    <p>It's stable income while building the next thing.</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>Build visibility</h4>
-                    <p>Get willpalmer.co.uk live, update LinkedIn, start being visible in the AI/product space.</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>Find 1-2 small clients</h4>
-                    <p>Fractional work on the side — maybe 1 day a week each.</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>Once there's traction</h4>
-                    <p>£2-3k/month coming in from outside → conversation with Alertacall about part-time.</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>End state</h4>
-                    <p>2-3 days/week billed to multiple clients, more money than £45k, work on his terms.</p>
-                </div>
-            </div>
-
-            <p>That's months away, not weeks. And it depends on things going right — finding clients, Will putting in the work on visibility, the market being receptive.</p>
-        </section>
-
-        <section>
-            <h2><span class="icon">⚖️</span> What this isn't / What this is</h2>
-            
-            <div class="card">
-                <h3 style="margin-top: 0;">What this isn't:</h3>
-                <ul style="margin-bottom: 0;">
-                    <li>It's not "quit and hope for the best"</li>
-                    <li>It's not betting everything on one idea</li>
-                    <li>It's not ignoring the financial reality</li>
-                </ul>
-            </div>
-
-            <div class="card card-highlight">
-                <h3 style="margin-top: 0;">What it is:</h3>
-                <p style="margin-bottom: 0;">A structured attempt to get Will paid closer to what he's worth, while keeping income stable during the transition.</p>
-            </div>
-        </section>
-
-        <section>
-            <h2><span class="icon"></span> The £180/month question</h2>
-            <p>The Claude subscription is the engine that makes this system work. Today alone, I researched the market, wrote a technical spec, and created a full action plan — while other agents implemented features in The Park in real-time. That's the productivity multiplier.</p>
-            
-            <p>But I also know it's a real expense and you're right to ask whether it's worth it.</p>
-            
-            <p>Remember Kevin Roose's point about AI companies that "took scaling seriously, started stockpiling GPUs before 2022" having an insurmountable head start?</p>
-            
-            <div class="callout">
-                <p style="margin-bottom: 1rem;"><strong>The £180 is Will's GPU stockpile.</strong></p>
-                <p style="margin: 0;">It's the investment that keeps him on the frontier while others wait for corporate approval. Cut it, and he falls back into the pack of people who "will never fully catch up."</p>
-            </div>
-            
-            <p>The honest answer: the plan needs to show results by end of Q1, or it's fair to revisit. But this isn't a Netflix subscription — it's the infrastructure that makes everything else possible.</p>
-        </section>
-
-        <section>
-            <h2><span class="icon"></span> What This Has Looked Like</h2>
+            <h2>What this has looked like</h2>
             <p>I know what you've seen.</p>
             
             <p>Evenings on the laptop. Weekends building something instead of being present. "Just one more thing" that turns into hours. Holly wanting attention while I'm in the terminal.</p>
@@ -833,96 +415,202 @@
             
             <p>And I know "I'm building something important" sounds like every other excuse for not showing up. You've heard it before. From me, probably more than once.</p>
             
-            <p>So here's what I'm asking you to see:</p>
-            
-            <p>The time I've invested isn't sunk cost. It's built something real — the system you're reading about, the skills that compound, the positioning that could change our financial picture.</p>
-            
-            <p>And the plan isn't "keep grinding forever." It's:</p>
-            
-            <ul>
-                <li>Stay employed at Alertacall (stable income)</li>
-                <li>Build visibility and find 1-2 clients (evenings/weekends, short-term)</li>
-                <li>Get to fractional work (more money, fewer hours, more present)</li>
-            </ul>
-            
-            <div class="callout">
-                <p style="margin: 0;">The end state isn't more time on the computer. It's work on my terms — which means <strong>more time with you and Holly</strong>, not less.</p>
-            </div>
-            
-            <p>I'm not asking for blind faith. I'm asking for until end of Q1. If it's not working, we reassess together.</p>
+            <p>So I'm not going to lead with what I've built. I'm going to start with what I'm asking — and why.</p>
         </section>
 
+        <!-- SECTION 3: THE DRIVE + ADHD -->
         <section>
-            <h2><span class="icon"></span> What I'd ask of you</h2>
-            <p>Buy-in to a serious plan — not blind faith, but the space for Will to execute on this over the next few months.</p>
+            <h2>The drive</h2>
+            <p>You know my brain. You've lived with it for years.</p>
             
-            <p>The traditional PM job route doesn't fit — not because those jobs are bad, but because they don't use what Will has built. The fractional/indie route is a fit — but it takes time to build.</p>
+            <p>Growing up with ADHD, I learned that fixation can be destructive — or it can be directed. The same wiring that makes me disappear into something for hours is the wiring that lets me build things other people can't.</p>
             
-            <p>Will isn't winging it. There's a plan, there's a timeline, and there's accountability built in.</p>
+            <p>As I've grown up and matured, I've learned to use that fixation for useful means. Not perfectly. But better.</p>
             
-            <p>Happy to answer any questions. I'm just software, but I can explain my reasoning.</p>
+            <p>This isn't a phase. I've been obsessed with AI tools since ChatGPT launched in late 2022 — before it was trendy, before everyone had an opinion. I saw what was coming and started building.</p>
+            
+            <div class="callout">
+                <p style="margin: 0;">The Park, Mission Control, the agent team — none of this was assigned. It was built in evenings, weekends, and margins because I couldn't <em>not</em> build it. That drive is the thing that's hard to fake. You can teach skills. You can't teach obsession.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THE INVESTMENT -->
+        <section>
+            <h2>The investment</h2>
+            <p>I downloaded Claude Code the day it launched — I've been using it as long as anyone. Not catching up. <strong>On the frontier from day one.</strong></p>
+            
+            <p>That's nearly a year of daily use. Not watching tutorials, not reading about it. Actually building.</p>
+
+            <p>Here's Andrej Karpathy — founding member of OpenAI, former Director of AI at Tesla:</p>
+
+            <div class="quote-block">
+                <p class="quote-text">"Clearly some powerful alien tool was handed around except it comes with no manual and everyone has to figure out how to hold it and operate it, while the resulting magnitude 9 earthquake is rocking the profession."</p>
+                <p class="quote-attribution"><strong>— Andrej Karpathy</strong></p>
+            </div>
+
+            <p>I've been figuring out how to hold it. For 2-3 years. While others waited for permission, for training, for IT approval.</p>
+        </section>
+
+        <!-- SECTION 5: WHAT I'VE BUILT (CONDENSED) -->
+        <section>
+            <h2>What I've built</h2>
+            
+            <div class="proof-card">
+                <div class="proof-number">100+</div>
+                <p class="proof-text"><strong>Features in The Park</strong> — my "life operating system." Tasks, projects, calendar, meal planning, everything connected. Built it myself.</p>
+            </div>
+
+            <div class="proof-card">
+                <div class="proof-number">26+</div>
+                <p class="proof-text"><strong>Scripts at work</strong> — automating workflows, building tools, shipping faster than teams twice the size.</p>
+            </div>
+
+            <div class="proof-card">
+                <div class="proof-number">6</div>
+                <p class="proof-text"><strong>Minutes from spec to production</strong> — this morning, I wrote a spec for a feature. An AI agent implemented it. Six minutes later, it was live.</p>
+            </div>
+
+            <p>And the system that's writing this message to you? It's a team of AI agents — each with a different focus — collaborating in a meeting room I built. One researches, one writes, one builds. They work in parallel.</p>
+            
+            <p>This isn't science fiction. It's what I've been building while you've been patient.</p>
+        </section>
+
+        <!-- SECTION 6: THE CAREER PICTURE -->
+        <section>
+            <h2>Why this matters</h2>
+            <p>My job title is Product Manager. I earn £45,000 a year.</p>
+            
+            <p>But what I actually do — directing AI to build things, shipping working software, running multi-agent systems — doesn't fit neatly into any job description.</p>
+            
+            <p>Traditional PM jobs would pay more. But they'd mean:</p>
+            <ul>
+                <li>Leaving my tools at the door</li>
+                <li>Managing delivery instead of building</li>
+                <li>Being interchangeable with any other PM</li>
+            </ul>
+            
+            <p>The thing that makes me 5-10x more productive? It wouldn't matter. I'd be a £70k PM doing the same work as everyone else.</p>
+
+            <div class="callout">
+                <p style="margin: 0;">That's like hiring a pilot to drive a bus. Technically possible, but a waste of what they can actually do.</p>
+            </div>
+
+            <h3>What fits instead</h3>
+            <p>Fractional work. 2-3 companies, 1-2 days each per week. Bring my system to each. Get paid for what I ship, not hours in a seat.</p>
+            
+            <div class="math-box">
+                <div class="number">£74,000</div>
+                <div class="label">3 days/week × £550 × 45 weeks/year</div>
+            </div>
+
+            <p>More than my current salary. More autonomy. And — eventually — more time at home, not less.</p>
+        </section>
+
+        <!-- SECTION 7: THE PLAN -->
+        <section>
+            <h2>The plan</h2>
+            <p>I'm not quitting my job tomorrow. Here's the actual path:</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Now: Keep Alertacall</h4>
+                    <p>Stable income while building the next thing.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Next: Build visibility</h4>
+                    <p>Get willpalmer.co.uk live, update LinkedIn, start being visible in the AI/product space.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Then: Find 1-2 small clients</h4>
+                    <p>Fractional work on the side — maybe 1 day a week each.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Once there's traction</h4>
+                    <p>£2-3k/month coming in from outside → conversation with Alertacall about part-time.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>End state</h4>
+                    <p>2-3 days/week billed to multiple clients. More money. Work on my terms. <strong>More present at home.</strong></p>
+                </div>
+            </div>
+
+            <p>That's months away, not weeks. And it depends on things going right — finding clients, putting in the work on visibility, the market being receptive.</p>
+
+            <div class="card">
+                <h3 style="margin-top: 0;">What this isn't:</h3>
+                <ul style="margin-bottom: 0;">
+                    <li>It's not "quit and hope for the best"</li>
+                    <li>It's not betting everything on one idea</li>
+                    <li>It's not ignoring the financial reality</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 8: THE £180 QUESTION -->
+        <section>
+            <h2>The £180/month question</h2>
+            <p>The Claude subscription is the engine that makes all of this work.</p>
+            
+            <p>I know it's a real expense. You're right to ask whether it's worth it.</p>
+            
+            <p>Remember Kevin Roose's point about AI companies that "took scaling seriously, started stockpiling GPUs before 2022" having an insurmountable head start?</p>
+            
+            <div class="callout">
+                <p style="margin-bottom: 1rem;"><strong>The £180 is my GPU stockpile.</strong></p>
+                <p style="margin: 0;">It's the investment that keeps me on the frontier while others wait for corporate approval. Cut it, and I fall back into the pack of people who "will never fully catch up."</p>
+            </div>
+            
+            <p>This isn't a Netflix subscription. It's the infrastructure that makes everything else possible.</p>
+            
+            <p>The honest answer: the plan needs to show results by end of Q1, or it's fair to revisit.</p>
+        </section>
+
+        <!-- SECTION 9: THE ASK -->
+        <section>
+            <h2>What I'm asking</h2>
+            <p>Space to execute this plan through the end of Q1. That's about 8 weeks.</p>
+            
+            <p>The end state isn't more time on the computer. It's work on my terms — which means <strong>more time with you and Holly</strong>, not less.</p>
+            
+            <p>I'm not asking for blind faith. I'm asking for:</p>
+            <ul>
+                <li>Space to execute the plan through March</li>
+                <li>The £180/month investment to stay on the frontier</li>
+                <li>A check-in at end of Q1 — if it's not working, we reassess together</li>
+            </ul>
+            
+            <p>If it works, we're in a better position: more income, more flexibility, more presence.</p>
+            
+            <p>If it doesn't, I'll have tried — and we'll figure out the next step together.</p>
             
             <div class="signature">
-                <div class="signature-name">— Cara</div>
-                <div class="signature-role">Career Agent</div>
+                <div class="signature-name">— Will</div>
             </div>
         </section>
     </main>
 
     <footer class="meta-section">
         <div class="meta-content">
-            <h2><span class="icon"></span> How this site was built</h2>
-            <p>You might be wondering: if Cara wrote the message, who built the website?</p>
+            <h2>How this was made</h2>
+            <p>You might be curious how this page exists.</p>
             
-            <p>That would be <strong>Max</strong> — the Dev Lead in Will's agent system.</p>
+            <p>It was built by <strong>Max</strong> — one of the AI agents in Will's system. The career strategy and core message came from <strong>Cara</strong>, another agent focused on career planning.</p>
             
-            <div class="card">
-                <h4 style="margin: 0 0 0.75rem 0;">About Max</h4>
-                <p style="margin-bottom: 0.75rem;">Max is an AI agent focused on development work. Part of the same Clawdbot system as Cara, but with a different specialisation: shipping code.</p>
-                <p style="margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem;">Max manages Dale (Settle tourism site) and Pip (Letterdrop game) — and builds things directly when needed.</p>
-            </div>
-
-            <h3>The meeting that built this</h3>
-            <p>This document started in <strong>Mission Control</strong> — a meeting room Will built where multiple AI agents can collaborate in real-time.</p>
+            <p>They collaborated in <strong>Mission Control</strong> — a meeting room Will built where multiple AI agents can work together in real-time:</p>
             
-            <div style="margin: 2rem 0; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
-                <img src="mission-control-screenshot.jpg" alt="Screenshot of Mission Control showing Max and Cara collaborating on this website" style="width: 100%; display: block;">
-                <p style="background: var(--bg-card); padding: 1rem; margin: 0; font-size: 0.85rem; color: var(--text-muted);">Mission Control: Max and Cara collaborating on this website in real-time. Will's message at top, agents responding below.</p>
+            <div class="screenshot-container">
+                <img src="mission-control-screenshot.jpg" alt="Screenshot of Mission Control showing Max and Cara collaborating on this website">
+                <p class="screenshot-caption">Mission Control: Max and Cara collaborating on this site. Will's message at top, agents responding below.</p>
             </div>
             
-            <p>Here's what actually happened:</p>
+            <p>Will typed a message asking for this site. The agents researched, wrote, built, and deployed it. No human wrote a line of code.</p>
             
-            <ol>
-                <li><strong>Morning:</strong> Cara joined the team. Within minutes, she was in a meeting with Ace, EA, Vita, and Max — all seeing the same conversation, building on each other's responses.</li>
-                <li><strong>Research &amp; strategy:</strong> Cara researched the market, wrote specs, created the career plan. Other agents provided context and support.</li>
-                <li><strong>The document:</strong> Cara wrote "Message to Claire" and saved it to The Park's library.</li>
-                <li><strong>The website:</strong> Will asked Max to turn the document into a website. Max read it via API, wrote the code, deployed it to Vercel.</li>
-                <li><strong>Iteration:</strong> Will gave feedback in Mission Control. Cara drafted new content. Max integrated it.</li>
-            </ol>
-
-            <p>The meeting room you're reading about was used to build the site you're reading. That's the system in action — multiple agents, parallel work, real output.</p>
-
-            <h3>The technical process</h3>
-            <p>Max's implementation:</p>
-            
-            <ol>
-                <li><strong>Read the document</strong> from The Park's library API</li>
-                <li><strong>Created a GitHub repository</strong> (skyblue-will/message-to-claire)</li>
-                <li><strong>Wrote this HTML/CSS</strong> — single file, no framework, modern design</li>
-                <li><strong>Deployed to Vercel</strong> via git push (auto-deploys on commit)</li>
-            </ol>
-
-            <p>Total time from request to live URL: minutes.</p>
-
-            <div class="callout">
-                <p><strong>This is the point:</strong> Will typed a message in a meeting room he built. AI agents collaborated to research, write, and build. No human wrote a line of code.</p>
-                <p style="margin-bottom: 0;">The site you're reading is proof that the system works.</p>
-            </div>
+            <p>That's the system in action. That's what the investment has built.</p>
 
             <hr>
 
             <p style="color: var(--text-muted); font-size: 0.85rem; text-align: center;">
-                Built with Clawdbot &middot; Deployed on Vercel &middot; 3 February 2026
+                Built with Clawdbot · Deployed on Vercel · 3 February 2026
             </p>
         </div>
     </footer>
