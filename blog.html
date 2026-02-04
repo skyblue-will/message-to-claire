@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Acceleration Gap | Will Palmer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #111113;
+            --bg-card: #18181b;
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --border: #27272a;
+            --success: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        /* Header */
+        .header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .header a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 3rem 2rem 6rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 3rem 0 1.5rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+        }
+
+        strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        /* Quote blocks */
+        .quote-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+
+        .quote-block.featured {
+            border-color: var(--accent);
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.08) 100%);
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .quote-attribution {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Lists */
+        ul, ol {
+            color: var(--text-secondary);
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        li { margin-bottom: 0.75rem; }
+        li::marker { color: var(--accent); }
+
+        /* Divider */
+        hr {
+            border: none;
+            height: 1px;
+            background: var(--border);
+            margin: 3rem 0;
+        }
+
+        /* Proof cards */
+        .proof-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .proof-card .proof-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            min-width: 60px;
+        }
+
+        .proof-card .proof-text {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Callout */
+        .callout {
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent);
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout p:last-child { margin-bottom: 0; }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .back-link:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            body { font-size: 16px; }
+            .hero h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.25rem; }
+            .proof-card { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html">← Back to Message</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The AI Acceleration Gap</h1>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.5rem;">What Two Years of Building Taught Me</p>
+            <p class="hero-meta">Will Palmer · February 2026</p>
+        </div>
+    </section>
+
+    <main class="content">
+        
+        <h2>Something is happening</h2>
+        
+        <p>Last week, Kevin Roose — tech columnist at the New York Times — wrote something that stopped me:</p>
+        
+        <div class="quote-block featured">
+            <p class="quote-text">"I follow AI adoption pretty closely, and I have never seen such a yawning inside/outside gap. People in SF are putting multi-agent claudeswarms in charge of their lives… people elsewhere are still trying to get approval to use Copilot in Teams."</p>
+            <p class="quote-attribution">— Kevin Roose, New York Times</p>
+        </div>
+        
+        <p>And more pointedly:</p>
+        
+        <div class="quote-block featured">
+            <p class="quote-text">"It's possible that restrictive IT policies have created a generation of knowledge workers who will never fully catch up."</p>
+            <p class="quote-attribution">— Kevin Roose, New York Times</p>
+        </div>
+        
+        <p>There's a gap opening up. Not between those who <em>use</em> AI and those who don't — but between those who are <strong>building with it every day</strong> and everyone else.</p>
+        
+        <p>I've been on one side of that gap for over two years. Here's what I've learned.</p>
+        
+        <hr>
+        
+        <h2>The compound effect is real</h2>
+        
+        <p>Andrej Karpathy — founding member of OpenAI, former Director of AI at Tesla — put it perfectly:</p>
+        
+        <div class="quote-block">
+            <p class="quote-text">"Clearly some powerful alien tool was handed around except it comes with no manual and everyone has to figure out how to hold it and operate it, while the resulting magnitude 9 earthquake is rocking the profession."</p>
+            <p class="quote-attribution">— Andrej Karpathy</p>
+        </div>
+        
+        <p>The manual doesn't exist. You learn by doing.</p>
+        
+        <p>I downloaded Claude Code the day it launched. Not because I knew what to do with it — but because I knew that waiting would mean falling behind. Every day since has been practice. Not tutorials. Not reading about it. Actually building.</p>
+        
+        <p>That daily practice compounds. The person who started two years ago isn't just "ahead" — they've developed intuitions, workflows, and capabilities that can't be taught in a course.</p>
+        
+        <hr>
+        
+        <h2>What I've built</h2>
+        
+        <p>Here's what two years of AI-assisted building looks like:</p>
+        
+        <h3>The Park — A Life Operating System</h3>
+        
+        <p>A full-stack web application with <strong>500+ API endpoints</strong> across 30+ entity types. Task management, calendar sync, issue tracking with root cause analysis, meal planning, asset management — all interconnected.</p>
+        
+        <p>Built solo. Using AI-assisted development from day one.</p>
+        
+        <h3>Mission Control — Multi-Agent Coordination</h3>
+        
+        <p>A system where multiple AI agents collaborate in real-time. One researches. One writes. One builds code. They coordinate in meeting rooms I designed.</p>
+        
+        <p>The agent system is <strong>three days old</strong>. Born Sunday. By Tuesday, it was researching, writing, and deploying production features.</p>
+        
+        <div class="proof-card">
+            <div class="proof-number">6 min</div>
+            <p class="proof-text">Spec to working feature. That's the current turnaround.</p>
+        </div>
+        
+        <h3>29 Products Across Work and Personal</h3>
+        
+        <p>10 personal projects. 19 work tools — dashboards, reporting systems, device management, monitoring integrations. Plus 24 automated skills that run without me touching them.</p>
+        
+        <hr>
+        
+        <h2>The skill isn't invention — it's integration</h2>
+        
+        <p>None of this is invented from scratch.</p>
+        
+        <p>The real skill is <strong>curation and integration</strong>: knowing what to take, what to leave, and how to make the pieces compound together. Good judgment about what to borrow, what to build, what to combine.</p>
+        
+        <p>That's harder than it sounds. Most people can't do it even with all the same ingredients available.</p>
+        
+        <hr>
+        
+        <h2>Why this matters</h2>
+        
+        <p>Kevin Roose's observation about "GPU stockpiling" applies to individuals too:</p>
+        
+        <div class="quote-block">
+            <p class="quote-text">"AI companies that took scaling seriously, started stockpiling GPUs before 2022 had an insurmountable head start over latecomers."</p>
+            <p class="quote-attribution">— Kevin Roose</p>
+        </div>
+        
+        <p>The equivalent for knowledge workers is <strong>capability stockpiling</strong>. Starting early. Building daily. Letting the practice compound.</p>
+        
+        <p>Every day I use these systems, they get better. Every feature I build, every workflow I automate, every agent I add — it compounds.</p>
+        
+        <div class="callout">
+            <p style="margin: 0;"><strong>This isn't a static qualification. It's compound interest on capability.</strong></p>
+        </div>
+        
+        <p>The gap Roose describes isn't going to close. It's going to widen. The people who started building two years ago will be four years ahead in two more years. The curve is exponential, not linear.</p>
+        
+        <hr>
+        
+        <h2>What I've learned</h2>
+        
+        <ol>
+            <li><strong>Start before you're ready.</strong> There's no manual. Waiting for one is how you fall behind.</li>
+            <li><strong>Build every day.</strong> Small things count. The compound effect comes from consistency, not intensity.</li>
+            <li><strong>Integrate, don't invent.</strong> The best tools already exist. Your job is to combine them intelligently.</li>
+            <li><strong>Ship, don't plan.</strong> A working prototype teaches you more than a perfect spec.</li>
+            <li><strong>The stack is the asset.</strong> It's not just skills on a CV — it's a working system that compounds over time.</li>
+        </ol>
+        
+        <hr>
+        
+        <h2>The bottom line</h2>
+        
+        <p>The AI acceleration gap is real. It's widening. And it's not about access to tools — anyone can sign up for Claude or ChatGPT.</p>
+        
+        <p>It's about <strong>practice</strong>. Daily, compounding practice. Building things, breaking things, learning what works.</p>
+        
+        <p>If you're still waiting for permission, for training, for your company's IT policy to catch up — you're already behind.</p>
+        
+        <p>The good news: you can start today.</p>
+        
+        <p>The bad news: so can everyone else. And some of us started two years ago.</p>
+        
+        <a href="index.html" class="back-link">← Back to Message to Claire</a>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p><em>Will Palmer is a Product Manager and AI systems builder based in the UK. He's been building with AI tools since late 2022 and runs a multi-agent system that helps manage his work and life.</em></p>
+            <p style="margin-top: 1rem;">Get in touch: <a href="mailto:will@willpalmer.co.uk">will@willpalmer.co.uk</a></p>
+        </div>
+    </footer>
+</body>
+</html>
